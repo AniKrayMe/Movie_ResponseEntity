@@ -19,13 +19,11 @@ public class ArticleController {
         this.articleService = articleService;
     }
 
-    @PostMapping(value = "article/create")
+    @PostMapping(value = "/article")
     public void create(@RequestBody Article article) {
         articleService.create(article);
     }
-
-
-    @GetMapping(value = "article/find/{id}")
+    @GetMapping(value = "/article/{id}")
     public void get(@PathVariable int id) {
         articleService.findById(id);
     }

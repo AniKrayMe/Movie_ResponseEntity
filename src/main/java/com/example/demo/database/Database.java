@@ -28,7 +28,7 @@ public class Database {
         try (Connection conn = DriverManager.getConnection(MariaDBConstantForDatabase.DB_URL,
                 MariaDBConstantForDatabase.user, MariaDBConstantForDatabase.pass)) {
             if (conn != null) {
-                String query = "CREATE DATABASE IF NOT EXISTS my_database";
+                String query = "CREATE DATABASE IF NOT EXISTS my_database_2";
                 PreparedStatement preparedStatement = conn.prepareStatement(query);
                 preparedStatement.executeUpdate();
             }
@@ -47,9 +47,9 @@ public class Database {
                         "CREATE TABLE IF NOT EXISTS user" +
                                 "(" +
                                 "id int AUTO_INCREMENT NOT NULL ," +
-                                "name VARCHAR(50) NOT NULL ," +
-                                "surname VARCHAR(50) NOT NULL ," +
-                                "password VARCHAR(50) NOT NULL ," +
+                                "name VARCHAR(225) NOT NULL ," +
+                                "surname VARCHAR(225) NOT NULL ," +
+                                "password VARCHAR(225) NOT NULL ," +
                                 "PRIMARY KEY (id)" +
                                 ");";
 
@@ -70,8 +70,8 @@ public class Database {
                         "CREATE TABLE if NOT EXISTS article" +
                                 "(" +
                                 "id int AUTO_INCREMENT NOT NULL ," +
-                                "title VARCHAR(50) NOT NULL ," +
-                                "description VARCHAR(200) NOT NULL ," +
+                                "title VARCHAR(225) NOT NULL ," +
+                                "description VARCHAR(225) NOT NULL ," +
                                 "date DATE NOT NULL ," +
                                 "PRIMARY KEY (id)" +
                                 ");";

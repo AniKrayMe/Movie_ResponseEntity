@@ -8,10 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication {
 
     public static void main(String[] args) {
-        Database.createAndInitialiseDatabase();
         SpringApplication.run(DemoApplication.class, args);
-
-
+        Database.createAndInitialiseDatabase();
 
     }
 }
