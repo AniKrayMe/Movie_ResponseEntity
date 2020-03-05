@@ -39,42 +39,20 @@ public class Database {
     }
 
 
-    private void createUserTable() {
+    private void createMovieTable() {
         try (Connection conn = DriverManager.getConnection(MariaDBConstantForTable.DB_URL,
                 MariaDBConstantForTable.user, MariaDBConstantForTable.pass)) {
             if (conn != null) {
                 String query =
-                        "CREATE TABLE IF NOT EXISTS user" +
-                                "(" +
-                                "id int AUTO_INCREMENT NOT NULL ," +
-                                "name VARCHAR(225) NOT NULL ," +
-                                "surname VARCHAR(225) NOT NULL ," +
-                                "password VARCHAR(225) NOT NULL ," +
-                                "PRIMARY KEY (id)" +
-                                ");";
-
-                PreparedStatement preparedStatement = conn.prepareStatement(query);
-                preparedStatement.executeUpdate();
-            }
-        } catch (SQLException ex) {
-            ex.getMessage();
-        }
-    }
-
-
-    private void createArticleTable() {
-        try (Connection conn = DriverManager.getConnection(MariaDBConstantForTable.DB_URL,
-                MariaDBConstantForTable.user, MariaDBConstantForTable.pass)) {
-            if (conn != null) {
-                String query =
-                        "CREATE TABLE if NOT EXISTS article" +
+                        "CREATE TABLE IF NOT EXISTS movies" +
                                 "(" +
                                 "id int AUTO_INCREMENT NOT NULL ," +
                                 "title VARCHAR(225) NOT NULL ," +
-                                "description VARCHAR(225) NOT NULL ," +
-                                "date DATE NOT NULL ," +
+                                "genre VARCHAR(225) NOT NULL ," +
+                                "country VARCHAR(225) NOT NULL ," +
                                 "PRIMARY KEY (id)" +
                                 ");";
+
                 PreparedStatement preparedStatement = conn.prepareStatement(query);
                 preparedStatement.executeUpdate();
             }
@@ -82,13 +60,13 @@ public class Database {
             ex.getMessage();
         }
     }
+
+
 
     public static void createAndInitialiseDatabase() {
         Database database = Database.getInstance();
         database.createDatabase();
-        database.createUserTable();
-        database.createArticleTable();
-
+        database.createMovieTable();
     }
 }
 
